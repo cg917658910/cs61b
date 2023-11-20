@@ -1,5 +1,5 @@
 /** Performs some basic linked list tests. */
-public class LinkedListDequeTest {
+public class ArrayDequeTest {
 
 	/* Utility method for printing out empty checks. */
 	public static boolean checkEmpty(boolean expected, boolean actual) {
@@ -41,7 +41,7 @@ public class LinkedListDequeTest {
 		System.out.println("Running add/isEmpty/Size test.");
 		System.out.println("Make sure to uncomment the lines below (and delete this print statement).");
 
-		LinkedListDeque<String> lld1 = new LinkedListDeque<String>();
+		ArrayDeque<String> lld1 = new ArrayDeque<String>();
 
 		boolean passed = checkEmpty(true, lld1.isEmpty());
 
@@ -75,7 +75,7 @@ public class LinkedListDequeTest {
 
 		System.out.println("Make sure to uncomment the lines below (and delete this print statement).");
 
-		LinkedListDeque<Integer> lld1 = new LinkedListDeque<Integer>();
+		ArrayDeque<Integer> lld1 = new ArrayDeque<Integer>();
 		// should be empty
 		boolean passed = checkEmpty(true, lld1.isEmpty());
 
@@ -91,9 +91,61 @@ public class LinkedListDequeTest {
 
 	}
 
+	public static void resizeTest() {
+		System.out.println("Running resize test.");
+
+		ArrayDeque<Integer> arrd1 = new ArrayDeque<Integer>();
+
+		boolean passed = checkEmpty(true, arrd1.isEmpty());
+
+		arrd1.addLast(6);
+		arrd1.addFirst(5);
+		arrd1.addLast(7);
+		arrd1.addFirst(4);
+		arrd1.addFirst(3);
+		arrd1.addFirst(2);
+		arrd1.addLast(8);
+		arrd1.addLast(9);
+		arrd1.addLast(10);
+		arrd1.addFirst(1);
+
+		arrd1.addLast(11);
+		arrd1.addLast(12);
+		arrd1.addLast(13);
+		arrd1.addLast(14);
+		arrd1.addLast(15);
+		arrd1.addLast(16);
+		arrd1.addLast(17);
+
+		System.out.println("Printing index 8: " + arrd1.get(8));
+		System.out.println("Printing out deque 1: ");
+		arrd1.printDeque();
+
+		arrd1.removeFirst();
+		arrd1.removeLast();
+		arrd1.removeLast();
+		arrd1.removeLast();
+		arrd1.removeLast();
+		arrd1.removeLast();
+		arrd1.removeLast();
+		arrd1.removeLast();
+		arrd1.removeFirst();
+		arrd1.removeFirst();
+		arrd1.removeFirst();
+		arrd1.removeLast();
+		arrd1.removeLast();
+
+		System.out.println("Printing out deque 2: ");
+		arrd1.printDeque();
+
+		printTestStatus(passed);
+
+	}
+
 	public static void main(String[] args) {
 		System.out.println("Running tests.\n");
 		addIsEmptySizeTest();
 		addRemoveTest();
+		resizeTest();
 	}
 }
